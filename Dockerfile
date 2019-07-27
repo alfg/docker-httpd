@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
 ARG HTTPD_VERSION=2.4.39
 
@@ -10,20 +10,40 @@ RUN apk add --update \
   apr-dev \
   apr-util \
   apr-util-dev \
-  build-base \
-  gcc \
-  pcre \
-  pcre-dev \
-  pkgconf \
-  pkgconfig \
-  wget
+  ca-certificates \
+	coreutils \
+	dpkg-dev dpkg \
+	gcc \
+	gnupg \
+	libc-dev \
+	# mod_md
+	curl-dev \
+	jansson-dev \
+	# mod_proxy_html mod_xml2enc
+	libxml2-dev \
+	# mod_lua
+	lua-dev \
+	make \
+	# mod_http2
+	nghttp2-dev \
+	# mod_session_crypto
+	openssl \
+	openssl-dev \
+	pcre-dev \
+	tar \
+	# mod_deflate
+  wget \
+	zlib-dev
 
 RUN cd /tmp && \
     wget http://apache.mirrors.ionfish.org//httpd/httpd-${HTTPD_VERSION}.tar.gz && \
     tar zxf httpd-${HTTPD_VERSION}.tar.gz && rm httpd-${HTTPD_VERSION}.tar.gz
 
 RUN cd /tmp/httpd-${HTTPD_VERSION} && \
-    ./configure --prefix=${PREFIX} && \
+    ./configure \
+    --prefix=${PREFIX} \
+    --enable-mods-shared=reallyall \
+		--enable-mpms-shared=all && \
     make && make install
 
 # Cleanup
