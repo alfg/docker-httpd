@@ -32,7 +32,6 @@ RUN rm -rf /var/cache/apk/* /tmp/*
 COPY src/ /var/www/html/
 COPY etc/httpd/httpd.conf /opt/httpd/conf/httpd.conf
 COPY etc/httpd/sites/ /opt/httpd/sites/
-COPY scripts/entrypoint.sh /opt/entrypoint.sh
 
 EXPOSE 80
 
