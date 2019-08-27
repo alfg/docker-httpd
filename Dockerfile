@@ -11,29 +11,29 @@ RUN apk add --update \
   apr-util \
   apr-util-dev \
   ca-certificates \
-	coreutils \
-	dpkg-dev dpkg \
-	gcc \
-	gnupg \
-	libc-dev \
-	# mod_md
-	curl-dev \
-	jansson-dev \
-	# mod_proxy_html mod_xml2enc
-	libxml2-dev \
-	# mod_lua
-	lua-dev \
-	make \
-	# mod_http2
-	nghttp2-dev \
-	# mod_session_crypto
-	openssl \
-	openssl-dev \
-	pcre-dev \
-	tar \
-	# mod_deflate
+  coreutils \
+  dpkg-dev dpkg \
+  gcc \
+  gnupg \
+  libc-dev \
+  # mod_md
+  curl-dev \
+  jansson-dev \
+  # mod_proxy_html mod_xml2enc
+  libxml2-dev \
+  # mod_lua
+  lua-dev \
+  make \
+  # mod_http2
+  nghttp2-dev \
+  # mod_session_crypto
+  openssl \
+  openssl-dev \
+  pcre-dev \
+  tar \
+  # mod_deflate
   wget \
-	zlib-dev
+  zlib-dev
 
 RUN cd /tmp && \
     wget http://apache.mirrors.ionfish.org//httpd/httpd-${HTTPD_VERSION}.tar.gz && \
